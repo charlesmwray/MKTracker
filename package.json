@@ -1,10 +1,11 @@
 {
-  "name": "KartScoreTracker",
+  "name": "MKTracker",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://charlesmwray.github.io/mktracker",
   "devDependencies": {
     "firebase": "^5.5.4",
+    "gh-pages": "^1.2.0",
     "react-scripts": "2.0.5"
   },
   "dependencies": {
