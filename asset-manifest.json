@@ -1,13 +1,13 @@
 {
-  "main.css": "/mktracker/static/css/main.d491e44f.chunk.css",
-  "main.js": "/mktracker/static/js/main.cc315286.chunk.js",
-  "main.js.map": "/mktracker/static/js/main.cc315286.chunk.js.map",
-  "static/js/1.f4708600.chunk.js": "/mktracker/static/js/1.f4708600.chunk.js",
-  "static/js/1.f4708600.chunk.js.map": "/mktracker/static/js/1.f4708600.chunk.js.map",
-  "runtime~main.js": "/mktracker/static/js/runtime~main.b238917f.js",
-  "runtime~main.js.map": "/mktracker/static/js/runtime~main.b238917f.js.map",
-  "static/css/main.d491e44f.chunk.css.map": "/mktracker/static/css/main.d491e44f.chunk.css.map",
-  "index.html": "/mktracker/index.html",
-  "precache-manifest.fd0d517691915c73a35cff67871bcba6.js": "/mktracker/precache-manifest.fd0d517691915c73a35cff67871bcba6.js",
-  "service-worker.js": "/mktracker/service-worker.js"
+  "main.css": "/MKTracker/static/css/main.d491e44f.chunk.css",
+  "main.js": "/MKTracker/static/js/main.e15a3a80.chunk.js",
+  "main.js.map": "/MKTracker/static/js/main.e15a3a80.chunk.js.map",
+  "static/js/1.a63cd12c.chunk.js": "/MKTracker/static/js/1.a63cd12c.chunk.js",
+  "static/js/1.a63cd12c.chunk.js.map": "/MKTracker/static/js/1.a63cd12c.chunk.js.map",
+  "runtime~main.js": "/MKTracker/static/js/runtime~main.e028c1c2.js",
+  "runtime~main.js.map": "/MKTracker/static/js/runtime~main.e028c1c2.js.map",
+  "static/css/main.d491e44f.chunk.css.map": "/MKTracker/static/css/main.d491e44f.chunk.css.map",
+  "index.html": "/MKTracker/index.html",
+  "precache-manifest.a4eefcf5abdd19a950f6e661b7755fe8.js": "/MKTracker/precache-manifest.a4eefcf5abdd19a950f6e661b7755fe8.js",
+  "service-worker.js": "/MKTracker/service-worker.js"
 }
