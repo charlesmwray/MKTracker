@@ -2,7 +2,7 @@
   "name": "MKTracker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://charlesmwray.github.io/mktracker",
+  "homepage": "https://charlesmwray.github.io/MKTracker",
   "devDependencies": {
     "firebase": "^5.5.4",
     "gh-pages": "^1.2.0",

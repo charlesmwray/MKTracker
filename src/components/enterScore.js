@@ -21,6 +21,7 @@ class EnterScore extends Component {
       this.handleCupChange = this.handleCupChange.bind(this);
 
       this.state = {
+          cupValue: 'mushroom'
       };
   }
 
@@ -68,6 +69,7 @@ class EnterScore extends Component {
                                 componentClass="select"
                                 placeholder="select"
                                 onChange={this.handleCupChange}
+                                value={this.state.cupValue}
                             >
                                 <option value="mushroom">Mushroom</option>
                                 <option value="other">...</option>
