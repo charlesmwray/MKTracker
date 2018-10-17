@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 
 import firebase from '../data/Firebase.js';
 
+import {
+    ListGroup,
+    ListGroupItem
+} from 'react-bootstrap';
+
+
 const Scores = (props) => {
     if (props.length === 0) {
         return;
     } else {
         return  (
             props.scores.map((score,  i) => {
-                return <h3 key={i}>{score.username} {score.points}</h3>
+                return <ListGroupItem key={i}>{score.username} {score.date} <span className="pull-right">{score.points}</span></ListGroupItem>
             })
         );
     }
@@ -46,7 +52,9 @@ class LeaderBoard extends Component {
     render() {
         return  <div>
             <h2>LeaderBoard</h2>
-            <Scores scores={this.state.scores} />
+            <ListGroup>
+                <Scores scores={this.state.scores} />
+            </ListGroup>
         </div>
     }
 }

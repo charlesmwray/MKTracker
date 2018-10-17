@@ -5,7 +5,9 @@ import './App.css';
 import firebase, { auth, provider } from './data/Firebase.js';
 
 import {
-    Button
+    Button,
+    Row,
+    Col
 } from 'react-bootstrap';
 
 import EnterScore from './components/enterScore.js';
@@ -40,10 +42,16 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <h1>Mario Kart Tracker</h1>
-                    {this.state.userInfo && <h2>Welcome {this.state.userInfo.displayName}</h2>}
+                    <Row>
+                        <Col xs={12} sm={8}>
+                            <h1>Mario Kart Tracker</h1>
+                        </Col>
+                        <Col xs={12} sm={4}>
+                            {!this.state.userInfo && <Button bsStyle="primary" onClick={() => {this.login()}}>Log In</Button>}
+                            {this.state.userInfo && <div className="pull-right"><img style={{ margin: '1rem', width: '50px', height: '50px', borderRadius: '50%' }} src={this.state.userInfo.photoURL} /></div>}
+                        </Col>
+                    </Row>
                 </header>
-                {!this.state.userInfo && <Button bsStyle="primary" onClick={this.login()}>Log In</Button>}
                 {
                     this.state.userInfo &&
                     <div>
@@ -54,7 +62,10 @@ class App extends Component {
 
                         {
                             this.state.showAddScore &&
-                            <EnterScore userInfo={this.state.userInfo} />
+                            <EnterScore
+                                userInfo={this.state.userInfo}
+                                toggleAddScore={this.toggleAddScore.bind(this)}
+                            />
                         }
                     </div>
                 }

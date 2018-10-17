@@ -77,7 +77,19 @@ class EnterScore extends Component {
                         </FormGroup>
                     </Col>
                     <Col xs={12} style={{textAlign:'right'}}>
-                        <Button bsStyle="primary" onClick={() => {this.saveScore()}}>Add Score</Button>
+                        <Button
+                            bsStyle="danger"
+                            onClick={() => { this.props.toggleAddScore() }}
+                            style={{marginRight: '1rem'}}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            bsStyle="primary"
+                            onClick={() => { this.saveScore() }}
+                        >
+                            Add Score
+                        </Button>
                     </Col>
                 </Row>
             </Grid>
