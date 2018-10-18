@@ -1,9 +1,9 @@
 {
-  "main.css": "/MKTracker/static/css/main.be16de2e.chunk.css",
-  "main.js": "/MKTracker/static/js/main.6bb8ad37.chunk.js",
-  "main.js.map": "/MKTracker/static/js/main.6bb8ad37.chunk.js.map",
-  "static/js/1.8ea17a18.chunk.js": "/MKTracker/static/js/1.8ea17a18.chunk.js",
-  "static/js/1.8ea17a18.chunk.js.map": "/MKTracker/static/js/1.8ea17a18.chunk.js.map",
+  "main.css": "/MKTracker/static/css/main.7ea6506a.chunk.css",
+  "main.js": "/MKTracker/static/js/main.f41f630c.chunk.js",
+  "main.js.map": "/MKTracker/static/js/main.f41f630c.chunk.js.map",
+  "static/js/1.3c2c661f.chunk.js": "/MKTracker/static/js/1.3c2c661f.chunk.js",
+  "static/js/1.3c2c661f.chunk.js.map": "/MKTracker/static/js/1.3c2c661f.chunk.js.map",
   "runtime~main.js": "/MKTracker/static/js/runtime~main.e028c1c2.js",
   "runtime~main.js.map": "/MKTracker/static/js/runtime~main.e028c1c2.js.map",
   "static/media/yoshi.png": "/MKTracker/static/media/yoshi.87334bad.png",
@@ -18,8 +18,8 @@
   "static/media/star.png": "/MKTracker/static/media/star.4a9ea677.png",
   "static/media/triforce.png": "/MKTracker/static/media/triforce.98c7c6d2.png",
   "static/media/bell.png": "/MKTracker/static/media/bell.d6c861ea.png",
-  "static/css/main.be16de2e.chunk.css.map": "/MKTracker/static/css/main.be16de2e.chunk.css.map",
+  "static/css/main.7ea6506a.chunk.css.map": "/MKTracker/static/css/main.7ea6506a.chunk.css.map",
   "index.html": "/MKTracker/index.html",
-  "precache-manifest.bc242ab5585251b8c03214d25b395f4a.js": "/MKTracker/precache-manifest.bc242ab5585251b8c03214d25b395f4a.js",
+  "precache-manifest.6c4e74fc9b6c0acaffaa5e24730c22b2.js": "/MKTracker/precache-manifest.6c4e74fc9b6c0acaffaa5e24730c22b2.js",
   "service-worker.js": "/MKTracker/service-worker.js"
 }
