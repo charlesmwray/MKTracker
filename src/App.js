@@ -48,7 +48,7 @@ class App extends Component {
                         </Col>
                         <Col xs={12} sm={4}>
                             {!this.state.userInfo && <Button bsStyle="primary" onClick={() => {this.login()}}>Log In</Button>}
-                            {this.state.userInfo && <div className="pull-right"><img style={{ margin: '1rem', width: '50px', height: '50px', borderRadius: '50%' }} src={this.state.userInfo.photoURL} /></div>}
+                            {this.state.userInfo && <div className="pull-right"><img className="cups" style={{ margin: '1rem', width: '50px', height: '50px', borderRadius: '50%' }} src={this.state.userInfo.photoURL} /></div>}
                         </Col>
                     </Row>
                 </header>

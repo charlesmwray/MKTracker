@@ -12,3 +12,10 @@ h1 {
     margin: 1rem 0;
     font-weight: 900;
 }
+.cups {
+	animation: beat 2s ease infinite alternate;
+}
+@keyframes beat {
+	from {	transform: rotate(-20deg); }
+	to {	transform: rotate(20deg); }
+}

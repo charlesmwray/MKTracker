@@ -40,7 +40,7 @@ const CupRow = (props) => {
                     textAlign: 'center'
                 }}
             >
-                <img src={cup[0]} style={{width: '8vw'}}/>
+                <img src={cup[0]} style={{width: '8vw'}} className="cups"/>
             </Col>;
         });
     } else {
