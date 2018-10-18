@@ -42,7 +42,9 @@ const CupRow = (props) => {
                     cursor: 'pointer'
                 }}
             >
-                <img src={cup[0]} style={{
+                <img src={cup[0]}
+                    className="cups"
+                    style={{
                     width: '8vw',
                     backgroundColor: 'black',
                     borderRadius: '50%',
