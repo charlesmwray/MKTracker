@@ -23,7 +23,7 @@ const Scores = (props) => {
                     <tr key={i}>
                       <th scope="row">{i+1}</th>
                       <td>{score.username}</td>
-                      <td>{score.avgScore}</td>
+                      <td>{score.avgScore.toFixed(1)}</td>
                       <td>{score.scores.length}</td>
                     </tr>
                 )
