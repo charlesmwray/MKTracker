@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 
 import firebase from '../data/Firebase.js';
 
-import {
-    ListGroup,
-    ListGroupItem
-} from 'react-bootstrap';
-
 const CupArray = (props) => {
     return props.cups.map((cup) => {
         return <span>{cup}</span>
@@ -20,12 +15,12 @@ const Scores = (props) => {
         return  (
             props.scores.map((score,  i) => {
                 return (
-                    <ListGroupItem key={i}>
-                        {i+1} {score.username}
-                        <span className="pull-right">
-                            {score.avgScore}
-                        </span>
-                    </ListGroupItem>
+                    <tr key={i}>
+                      <th scope="row">{i+1}</th>
+                      <td>{score.username}</td>
+                      <td>{score.avgScore.toFixed(1)}</td>
+                      <td>{score.scores.length}</td>
+                    </tr>
                 )
             })
         );
@@ -97,10 +92,19 @@ class LeaderBoard extends Component {
 
     render() {
         return  <div>
-            <h2>LeaderBoard</h2>
-            <ListGroup>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Rank</th>
+                  <th scope="col">Player</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Total games</th>
+                </tr>
+              </thead>
+              <tbody>
                 <Scores scores={this.state.scores} />
-            </ListGroup>
+              </tbody>
+            </table>
         </div>
     }
 }
