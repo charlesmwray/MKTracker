@@ -13,9 +13,9 @@ h1 {
     font-weight: 900;
 }
 .cups {
-	animation: beat 2s ease infinite alternate;
+	animation: beat 1s ease-in-out infinite alternate;
 }
 @keyframes beat {
-	from {	transform: rotate(-20deg); }
-	to {	transform: rotate(20deg); }
+	from {	transform: rotate(-6deg); }
+	to {	transform: rotate(6deg); }
 }
