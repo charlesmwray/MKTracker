@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 
 import firebase from '../data/Firebase.js';
 
-import {
-    ListGroup,
-    ListGroupItem
-} from 'react-bootstrap';
-
 const CupArray = (props) => {
     return props.cups.map((cup) => {
         return <span>{cup}</span>
@@ -101,7 +96,7 @@ class LeaderBoard extends Component {
               <thead>
                 <tr>
                   <th scope="col">Rank</th>
-                  <th scope="col">Hero</th>
+                  <th scope="col">Player</th>
                   <th scope="col">Score</th>
                   <th scope="col">Total games</th>
                 </tr>
