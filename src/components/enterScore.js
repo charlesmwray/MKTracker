@@ -30,6 +30,7 @@ const CupRow = (props) => {
     if (props && props.cups && props.cups.length) {
         return props.cups.map((cup)=>{
             return <Col
+                xs={4}
                 sm={2}
                 key={cup[1]}
                 onClick={()=>{props.selectCup(cup[1])}}
@@ -37,10 +38,16 @@ const CupRow = (props) => {
                     padding: '1rem',
                     borderRadius: '5px',
                     backgroundColor: cup[1] === props.selectedCup ? 'lightskyblue' : 'transparent',
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    cursor: 'pointer'
                 }}
             >
-                <img src={cup[0]} style={{width: '8vw'}}/>
+                <img src={cup[0]} style={{
+                    width: '8vw',
+                    backgroundColor: 'black',
+                    borderRadius: '50%',
+                    padding: '1px'
+                }}/>
             </Col>;
         });
     } else {
@@ -87,9 +94,10 @@ class EnterScore extends Component {
   }
 
   getPointsValidationState() {
-      if (this.state.pointsValue > 60) {
+      const pointsValue = parseInt(this.state.pointsValue);
+      if (pointsValue > 60 || pointsValue < 4) {
           return 'error';
-      } else if (this.state.pointsValue !== null ) {
+      } else if (pointsValue !== null ) {
           return 'success';
       } else {
           return null;
@@ -98,14 +106,14 @@ class EnterScore extends Component {
 
   render() {
     return (
-        <form>
+        <form style={{marginTop: '2rem'}}>
             <Grid>
                 <Row>
                     <Col xs={12} sm={1}>
                         <FormGroup validationState={this.getPointsValidationState()}>
                             <ControlLabel>Points</ControlLabel>
                             <FormControl
-                                type="number"
+                                type="text"
                                 value={this.state.prixPoints}
                                 placeholder=""
                                 onChange={this.handlePointsChange}
@@ -142,7 +150,7 @@ class EnterScore extends Component {
                                 ]} />
                         </Row>
                     </Col>
-                    <Col xs={12} style={{textAlign:'right'}}>
+                    <Col xs={12} style={{ textAlign:'right', marginTop: '2rem' }}>
                         <Button
                             bsStyle="danger"
                             onClick={() => { this.props.toggleAddScore() }}

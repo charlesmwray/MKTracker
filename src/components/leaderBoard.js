@@ -7,6 +7,11 @@ import {
     ListGroupItem
 } from 'react-bootstrap';
 
+const CupArray = (props) => {
+    return props.cups.map((cup) => {
+        return <span>{cup}</span>
+    })
+}
 
 const Scores = (props) => {
     if (props.length === 0) {
@@ -14,7 +19,14 @@ const Scores = (props) => {
     } else {
         return  (
             props.scores.map((score,  i) => {
-                return <ListGroupItem key={i}>{score.username} {score.date} <span className="pull-right">{score.avgScore}</span></ListGroupItem>
+                return (
+                    <ListGroupItem key={i}>
+                        {i+1} {score.username}
+                        <span className="pull-right">
+                            {score.avgScore}
+                        </span>
+                    </ListGroupItem>
+                )
             })
         );
     }
