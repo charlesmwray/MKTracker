@@ -40,6 +40,7 @@ class App extends Component {
     }
     render() {
         return (
+            <div class="container">
             <div className="App">
                 <header className="App-header">
                     <Row>
@@ -70,6 +71,7 @@ class App extends Component {
                     </div>
                 }
                 <LeaderBoard />
+            </div>
             </div>
         );
     }
