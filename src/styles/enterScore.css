@@ -6,7 +6,7 @@
     padding: 1px;
 }
 
-@@media (min-width: 768px) {
+@media (min-width: 768px) {
     .cups {
         width: 8vw;
     }
