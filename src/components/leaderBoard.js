@@ -13,21 +13,21 @@ const CupArray = (props) => {
 function showTooltip(score){
     return (
         <Popover id="popover-trigger-hover-focus" title={score.username+" score details"}>
-                        Top score: <b>{ Math.max.apply(Math, score.scores) }</b><br/>
-                        Games played: { score.scores.length }<br/>
-                        All scores:
-                        <ul>
-                            {
-                                score.scores.map((value, index) => {
-                                    return (
-                                        <li key={index} >
-                                            {value.replace(/^0+/, '')}
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </Popover>
+            Top score: <b>{ Math.max.apply(Math, score.scores) }</b><br/>
+            Games played: { score.scores.length }<br/>
+            All scores:
+            <ul>
+                {
+                    score.scores.map((value, index) => {
+                        return (
+                            <li key={index} >
+                                {value.replace(/^0+/, '')}
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </Popover>
     )
 }
 const Scores = (props) => {
