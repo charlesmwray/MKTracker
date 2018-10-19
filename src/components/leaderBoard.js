@@ -2,12 +2,34 @@ import React, { Component } from 'react';
 
 import firebase from '../data/Firebase.js';
 
+import { Popover, OverlayTrigger } from 'react-bootstrap';
+
 const CupArray = (props) => {
     return props.cups.map((cup) => {
         return <span>{cup}</span>
     })
 }
 
+const showTooltip = (score) => {
+    return (
+        <Popover id="popover-trigger-hover-focus" title={score.username+" score details"}>
+            Top score: <b>{ Math.max.apply(Math, score.scores) }</b><br/>
+            Games played: { score.scores.length }<br/>
+            All scores:
+            <ul>
+                {
+                    score.scores.map((value, index) => {
+                        return (
+                            <li key={index} >
+                                {value.replace(/^0+/, '')}
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </Popover>
+    )
+}
 const Scores = (props) => {
     if (props.length === 0) {
         return '...loading'
@@ -15,12 +37,14 @@ const Scores = (props) => {
         return  (
             props.scores.map((score,  i) => {
                 return (
-                    <tr key={i}>
-                      <th scope="row">{i+1}</th>
-                      <td>{score.username}</td>
-                      <td>{score.avgScore.toFixed(1)}</td>
-                      <td>{score.scores.length}</td>
-                    </tr>
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={showTooltip(score)} key={i}>
+                        <tr >
+                          <th scope="row">{i+1}</th>
+                          <td>{score.username}</td>
+                          <td>{score.avgScore.toFixed(1)}</td>
+                          <td>{score.scores.length}</td>
+                        </tr>
+                    </OverlayTrigger>
                 )
             })
         );
