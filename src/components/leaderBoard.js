@@ -10,7 +10,7 @@ const CupArray = (props) => {
     })
 }
 
-function showTooltip(score){
+const showTooltip = (score) => {
     return (
         <Popover id="popover-trigger-hover-focus" title={score.username+" score details"}>
             Top score: <b>{ Math.max.apply(Math, score.scores) }</b><br/>
