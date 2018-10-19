@@ -10,7 +10,7 @@ const CupArray = (props) => {
     })
 }
 
-const showTooltip = (score) => {
+const ScoreToolTip = (score) => {
     return (
         <Popover id="popover-trigger-hover-focus" title={score.username+" score details"}>
             Top score: <b>{ Math.max.apply(Math, score.scores) }</b><br/>
@@ -37,7 +37,8 @@ const Scores = (props) => {
         return  (
             props.scores.map((score,  i) => {
                 return (
-                    <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={showTooltip(score)} key={i}>
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={ScoreToolTip
+                        (score)} key={i}>
                         <tr >
                           <th scope="row">{i+1}</th>
                           <td>{score.username}</td>
