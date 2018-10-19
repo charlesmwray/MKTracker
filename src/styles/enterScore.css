@@ -1,5 +1,5 @@
 .cups {
-	animation: beat 1s ease-in-out infinite alternate;
+    animation: beat 1s ease-in-out infinite alternate;
     width: 20vw;
     background-color: black;
     border-radius: 50%;
@@ -13,6 +13,6 @@
 }
 
 @keyframes beat {
-	from {	transform: rotate(-6deg); }
-	to {	transform: rotate(6deg); }
+    from {	transform: rotate(-6deg); }
+    to {	transform: rotate(6deg); }
 }
