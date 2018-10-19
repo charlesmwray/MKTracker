@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import firebase from '../data/Firebase.js';
 
+import '../styles/enterScore.css';
+
 import banana from '../images/cups/banana.png'
 import bell from '../images/cups/bell.png'
 import crossing from '../images/cups/crossing.png'
@@ -44,12 +46,7 @@ const CupRow = (props) => {
             >
                 <img src={cup[0]}
                     className="cups"
-                    style={{
-                    width: '8vw',
-                    backgroundColor: 'black',
-                    borderRadius: '50%',
-                    padding: '1px'
-                }}/>
+                />
             </Col>;
         });
     } else {
@@ -108,7 +105,7 @@ class EnterScore extends Component {
 
   render() {
     return (
-        <form style={{marginTop: '2rem'}}>
+        <form style={{margin: '2rem 0'}}>
             <Grid>
                 <Row>
                     <Col xs={12} sm={1}>

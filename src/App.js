@@ -40,7 +40,7 @@ class App extends Component {
     }
     render() {
         return (
-            <div class="container">
+            <div className="container">
                 <div className="App">
                     <header className="App-header">
                         <Row>
@@ -60,7 +60,7 @@ class App extends Component {
                                 !this.state.showAddScore &&
                                 <Button bsStyle="primary" onClick={() => {this.toggleAddScore()}}>Add Score</Button>
                             }
-    
+
                             {
                                 this.state.showAddScore &&
                                 <EnterScore
