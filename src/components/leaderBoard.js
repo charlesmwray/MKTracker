@@ -106,10 +106,7 @@ class LeaderBoard extends Component {
 				windowTotal = 0;
 				for (var i = 0; i < windowGames; i++) {
                     windowTotal = windowTotal + parseInt(parsedStats['scores'][ parsedStats['scores'].length - 1 - i]);
-                    console.log(parseInt(parsedStats['scores'][ parsedStats['scores'].length - 1 - i]));
-                    console.log(windowTotal);
                 }
-                console.log(windowGames);
                 parsedStats['avgLast10'] = windowTotal/windowGames;
 
 				parsedStats['avgScore'] = parsedStats['scores'].reduce((a,b) => { return parseInt(a) + parseInt(b);  }) /  parsedStats['scores'].length;
