@@ -43,6 +43,7 @@ const Scores = (props) => {
                           <th scope="row">{i+1}</th>
                           <td>{score.username}</td>
                           <td>{score.avgScore.toFixed(1)}</td>
+                            <td>{score.avgLast10.toFixed(1)}</td>
                           <td>{score.scores.length}</td>
                         </tr>
                     </OverlayTrigger>
@@ -69,10 +70,24 @@ class LeaderBoard extends Component {
             let scores = [];
             let players = [];
             let all = [];
+            let windowGames;
+            let windowTotal = 0;
 
             keys.forEach((k) => {
                 scores.push(data[k]);
             });
+            scores = [{'username':'mario', 'points':'35'},
+				{'username':'mario', 'points':'50'},
+				{'username':'mario', 'points':'60'},
+				{'username':'mario', 'points':'22'},
+				{'username':'mario', 'points':'37'},
+				{'username':'mario', 'points':'35'},
+				{'username':'mario', 'points':'35'},
+				{'username':'mario', 'points':'37'},
+				{'username':'mario', 'points':'60'},
+				{'username':'mario', 'points':'22'},
+				{'username':'mario', 'points':'60'},
+				{'username':'mario', 'points':'22'}];
 
             scores.map((s) => {
                 if (players.indexOf(s.username) === -1){
@@ -85,6 +100,7 @@ class LeaderBoard extends Component {
                     scores:[],
                     cups:[],
                     avgScore: 0,
+                    avgLast10: 0,
                     username: players[i]
                 };
 
@@ -96,6 +112,15 @@ class LeaderBoard extends Component {
                 });
 
                 parsedStats['avgScore'] = parsedStats['scores'].reduce((a,b) => { return parseInt(a) + parseInt(b);  }) /  parsedStats['scores'].length;
+
+                // Avg score over last 10 games
+				windowGames = parsedStats['scores'].length > 10 ? 10 : parsedStats['scores'].length;
+				for (var i = 0; i < windowGames; i++) {
+                    windowTotal = windowTotal + parseInt(parsedStats['scores'][ parsedStats['scores'].length - 1 - i]);
+                }
+                parsedStats['avgLast10'] = windowTotal/windowGames;
+
+				parsedStats['avgScore'] = parsedStats['scores'].reduce((a,b) => { return parseInt(a) + parseInt(b);  }) /  parsedStats['scores'].length;
                 all.push(parsedStats);
             });
 
@@ -117,12 +142,13 @@ class LeaderBoard extends Component {
 
     render() {
         return  <div>
-            <table class="table table-striped">
+            <table className="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">Rank</th>
                   <th scope="col">Player</th>
                   <th scope="col">Score</th>
+                  <th scope="col">Last 10</th>
                   <th scope="col">Total games</th>
                 </tr>
               </thead>
