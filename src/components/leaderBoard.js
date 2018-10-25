@@ -76,18 +76,6 @@ class LeaderBoard extends Component {
             keys.forEach((k) => {
                 scores.push(data[k]);
             });
-            scores = [{'username':'mario', 'points':'35'},
-				{'username':'mario', 'points':'50'},
-				{'username':'mario', 'points':'60'},
-				{'username':'mario', 'points':'22'},
-				{'username':'mario', 'points':'37'},
-				{'username':'mario', 'points':'35'},
-				{'username':'mario', 'points':'35'},
-				{'username':'mario', 'points':'37'},
-				{'username':'mario', 'points':'60'},
-				{'username':'mario', 'points':'22'},
-				{'username':'mario', 'points':'60'},
-				{'username':'mario', 'points':'22'}];
 
             scores.map((s) => {
                 if (players.indexOf(s.username) === -1){
@@ -115,9 +103,13 @@ class LeaderBoard extends Component {
 
                 // Avg score over last 10 games
 				windowGames = parsedStats['scores'].length > 10 ? 10 : parsedStats['scores'].length;
+				windowTotal = 0;
 				for (var i = 0; i < windowGames; i++) {
                     windowTotal = windowTotal + parseInt(parsedStats['scores'][ parsedStats['scores'].length - 1 - i]);
+                    console.log(parseInt(parsedStats['scores'][ parsedStats['scores'].length - 1 - i]));
+                    console.log(windowTotal);
                 }
+                console.log(windowGames);
                 parsedStats['avgLast10'] = windowTotal/windowGames;
 
 				parsedStats['avgScore'] = parsedStats['scores'].reduce((a,b) => { return parseInt(a) + parseInt(b);  }) /  parsedStats['scores'].length;
