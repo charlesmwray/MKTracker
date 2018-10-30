@@ -40,11 +40,11 @@ const Scores = (props) => {
                     <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={ScoreToolTip
                         (score)} key={i}>
                         <tr >
-                          <th scope="row">{i+1}</th>
-                          <td>{score.username}</td>
-                          <td>{score.avgScore.toFixed(1)}</td>
+                            <th scope="row">{i+1}</th>
+                            <td>{score.username}</td>
+                            <td>{score.avgScore.toFixed(1)}</td>
                             <td>{score.avgLast10.toFixed(1)}</td>
-                          <td>{score.scores.length}</td>
+                            <td>{score.scores.length}</td>
                         </tr>
                     </OverlayTrigger>
                 )
