@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import firebase from '../data/Firebase.js';
 
+import { Line } from 'react-chartjs-2';
+
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 
 const CupArray = (props) => {
@@ -36,15 +38,46 @@ const Scores = (props) => {
     } else {
         return  (
             props.scores.map((score,  i) => {
+                let labels = []
+                for (var j = 0; j < score.scores.length; j++) {
+                    labels.push(score.scores[j]);
+                }
                 return (
                     <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={ScoreToolTip
                         (score)} key={i}>
                         <tr >
-                          <th scope="row">{i+1}</th>
-                          <td>{score.username}</td>
-                          <td>{score.avgScore.toFixed(1)}</td>
+                            <th scope="row">{i+1}</th>
+                            <td>{score.username}</td>
+                            <td>{score.avgScore.toFixed(1)}</td>
                             <td>{score.avgLast10.toFixed(1)}</td>
-                          <td>{score.scores.length}</td>
+                            <td style={{
+                                width: '70px',
+                                height: '50px'
+                            }}>
+                                <Line
+                                    width={200}
+                                    height={80}
+                                    data={{
+                                        labels: labels,
+                                        datasets: [{
+                                          label: 'All scores',
+                                          data: score.scores,
+                                          backgroundColor: "#ff5722"
+                                        }]
+                                    }}
+                                    options={{
+                                        responsive: true,
+                                        legend: {
+                                            display: false
+                                        },
+                                        scales:{
+                                            xAxes: [{
+                                                display: false //this will remove all the x-axis grid lines
+                                            }]
+                                        }
+                                    }}
+                                />
+                            </td>
                         </tr>
                     </OverlayTrigger>
                 )
@@ -138,7 +171,6 @@ class LeaderBoard extends Component {
                   <th scope="col">Player</th>
                   <th scope="col">Score</th>
                   <th scope="col">Last 10</th>
-                  <th scope="col">Total games</th>
                 </tr>
               </thead>
               <tbody>

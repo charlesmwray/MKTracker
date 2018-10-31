@@ -47,7 +47,13 @@ class App extends Component {
                             <Col xs={12} sm={8}>
                                 <h1>Mario Kart Tracker</h1>
                             </Col>
-                            <Col xs={12} sm={4}>
+                            <Col xs={12} sm={2}>
+                                {
+                                    !this.state.showAddScore &&
+                                    <Button bsStyle="primary" onClick={() => {this.toggleAddScore()}}>Add Score</Button>
+                                }
+                            </Col>
+                            <Col xs={12} sm={2}>
                                 {!this.state.userInfo && <Button bsStyle="primary" onClick={() => {this.login()}}>Log In</Button>}
                                 {this.state.userInfo && <div className="pull-right"><img style={{ margin: '1rem', width: '50px', height: '50px', borderRadius: '50%' }} src={this.state.userInfo.photoURL} /></div>}
                             </Col>
@@ -56,11 +62,6 @@ class App extends Component {
                     {
                         this.state.userInfo &&
                         <div>
-                            {
-                                !this.state.showAddScore &&
-                                <Button bsStyle="primary" onClick={() => {this.toggleAddScore()}}>Add Score</Button>
-                            }
-
                             {
                                 this.state.showAddScore &&
                                 <EnterScore
