@@ -11,14 +11,15 @@ const CupArray = (props) => {
 }
 
 const ScoreToolTip = (score) => {
+    var data=score.scores
     return (
         <Popover id="popover-trigger-hover-focus" title={score.username+" score details"}>
-            Top score: <b>{ Math.max.apply(Math, score.scores) }</b><br/>
-            Games played: { score.scores.length }<br/>
-            All scores:
+            Top score: <b>{ Math.max.apply(Math, data) }</b><br/>
+            Games played: { data.length }<br/>
+            Last 10 scores:
             <ul>
                 {
-                    score.scores.map((value, index) => {
+                    data.slice(Math.max(data.length - 10, 1)).map((value, index) => {
                         return (
                             <li key={index} >
                                 {value.replace(/^0+/, '')}
