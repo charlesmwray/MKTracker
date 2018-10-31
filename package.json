@@ -9,8 +9,10 @@
     "react-scripts": "2.0.5"
   },
   "dependencies": {
+    "chart.js": "^2.7.3",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.5.2"
   },
   "scripts": {

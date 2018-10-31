@@ -19,3 +19,6 @@ h1 {
 	from {	transform: rotate(-6deg); }
 	to {	transform: rotate(6deg); }
 }
+.App-header {
+    padding: 1rem 0;
+}
