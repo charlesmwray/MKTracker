@@ -1,7 +1,7 @@
 {
   "main.css": "/MKTracker/static/css/main.c17491f6.chunk.css",
-  "main.js": "/MKTracker/static/js/main.46697f65.chunk.js",
-  "main.js.map": "/MKTracker/static/js/main.46697f65.chunk.js.map",
+  "main.js": "/MKTracker/static/js/main.7de335a2.chunk.js",
+  "main.js.map": "/MKTracker/static/js/main.7de335a2.chunk.js.map",
   "static/js/1.9a2d565b.chunk.js": "/MKTracker/static/js/1.9a2d565b.chunk.js",
   "static/js/1.9a2d565b.chunk.js.map": "/MKTracker/static/js/1.9a2d565b.chunk.js.map",
   "runtime~main.js": "/MKTracker/static/js/runtime~main.e028c1c2.js",
@@ -20,6 +20,6 @@
   "static/media/bell.png": "/MKTracker/static/media/bell.fef4ae6e.png",
   "static/css/main.c17491f6.chunk.css.map": "/MKTracker/static/css/main.c17491f6.chunk.css.map",
   "index.html": "/MKTracker/index.html",
-  "precache-manifest.28dec7e451486e7f76500f7688acff0a.js": "/MKTracker/precache-manifest.28dec7e451486e7f76500f7688acff0a.js",
+  "precache-manifest.23a8fd475fca48b31fe0a9df898a8ca5.js": "/MKTracker/precache-manifest.23a8fd475fca48b31fe0a9df898a8ca5.js",
   "service-worker.js": "/MKTracker/service-worker.js"
 }
