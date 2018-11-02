@@ -22,7 +22,7 @@ const ScoreToolTip = (score) => {
             <ul>
                 {
                     // Returns the latest 10 scores
-                    scores.slice(Math.max(scores.length - 10, 1)).map((value, index) => {
+                    scores.slice(0, Math.min(10, scores.length)).map((value, index) => {
                         return (
                             <li key={index} >
                                 {value.replace(/^0+/, '')}
