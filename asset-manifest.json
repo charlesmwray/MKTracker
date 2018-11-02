@@ -1,7 +1,7 @@
 {
-  "main.css": "/MKTracker/static/css/main.18663209.chunk.css",
-  "main.js": "/MKTracker/static/js/main.90f8bc8d.chunk.js",
-  "main.js.map": "/MKTracker/static/js/main.90f8bc8d.chunk.js.map",
+  "main.css": "/MKTracker/static/css/main.25c187ed.chunk.css",
+  "main.js": "/MKTracker/static/js/main.a6c4ae1f.chunk.js",
+  "main.js.map": "/MKTracker/static/js/main.a6c4ae1f.chunk.js.map",
   "static/js/1.c0554194.chunk.js": "/MKTracker/static/js/1.c0554194.chunk.js",
   "static/js/1.c0554194.chunk.js.map": "/MKTracker/static/js/1.c0554194.chunk.js.map",
   "runtime~main.js": "/MKTracker/static/js/runtime~main.e028c1c2.js",
@@ -18,8 +18,8 @@
   "static/media/star.png": "/MKTracker/static/media/star.63ba072a.png",
   "static/media/triforce.png": "/MKTracker/static/media/triforce.bff35bea.png",
   "static/media/bell.png": "/MKTracker/static/media/bell.fef4ae6e.png",
-  "static/css/main.18663209.chunk.css.map": "/MKTracker/static/css/main.18663209.chunk.css.map",
+  "static/css/main.25c187ed.chunk.css.map": "/MKTracker/static/css/main.25c187ed.chunk.css.map",
   "index.html": "/MKTracker/index.html",
-  "precache-manifest.4e346fa8d778d528483664beffb79a65.js": "/MKTracker/precache-manifest.4e346fa8d778d528483664beffb79a65.js",
+  "precache-manifest.9cceec1b13f99c8908a514ddb3ae85ca.js": "/MKTracker/precache-manifest.9cceec1b13f99c8908a514ddb3ae85ca.js",
   "service-worker.js": "/MKTracker/service-worker.js"
 }
