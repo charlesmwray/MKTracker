@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://charlesmwray.github.io/MKTracker",
   "devDependencies": {
-    "firebase": "^5.5.4",
+    "firebase": "^5.5.7",
     "gh-pages": "^1.2.0",
     "react-scripts": "2.0.5"
   },
