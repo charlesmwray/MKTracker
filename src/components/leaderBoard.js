@@ -171,7 +171,7 @@ class LeaderBoard extends Component {
                 <tr>
                   <th scope="col">Rank</th>
                   <th scope="col">Player</th>
-                  <th scope="col">Score</th>
+                  <th scope="col">Average Score</th>
                   <th scope="col">Last 10</th>
                 </tr>
               </thead>
