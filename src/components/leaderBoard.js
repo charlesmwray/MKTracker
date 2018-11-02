@@ -13,15 +13,16 @@ const CupArray = (props) => {
 }
 
 const ScoreToolTip = (score) => {
-    var data=score.scores
+    let scores = score.scores
     return (
         <Popover id="popover-trigger-hover-focus" title={score.username+" score details"}>
-            Top score: <b>{ Math.max.apply(Math, data) }</b><br/>
-            Games played: { data.length }<br/>
+            Top score: <b>{ Math.max.apply(Math, scores) }</b><br/>
+            Games played: { scores.length }<br/>
             Last 10 scores:
             <ul>
                 {
-                    data.slice(Math.max(data.length - 10, 1)).map((value, index) => {
+                    // Returns the latest 10 scores
+                    scores.slice(Math.max(scores.length - 10, 1)).map((value, index) => {
                         return (
                             <li key={index} >
                                 {value.replace(/^0+/, '')}
@@ -170,7 +171,7 @@ class LeaderBoard extends Component {
                 <tr>
                   <th scope="col">Rank</th>
                   <th scope="col">Player</th>
-                  <th scope="col">Score</th>
+                  <th scope="col">Average Score</th>
                   <th scope="col">Last 10</th>
                 </tr>
               </thead>
