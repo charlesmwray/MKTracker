@@ -40,12 +40,13 @@ const Scores = (props) => {
     } else {
         return  (
             props.scores.map((score,  i) => {
-                let labels = []
+                let labels = [];
+                let placement = i > 3 ? 'top' : 'bottom';
                 for (var j = 0; j < score.scores.length; j++) {
                     labels.push(score.scores[j]);
                 }
                 return (
-                    <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={ScoreToolTip
+                    <OverlayTrigger trigger={['hover', 'focus']} placement={placement} overlay={ScoreToolTip
                         (score)} key={i}>
                         <tr >
                             <th scope="row">{i+1}</th>
@@ -55,7 +56,7 @@ const Scores = (props) => {
                             <td style={{
                                 width: '70px',
                                 height: '50px'
-                            }}>
+                            }} className="hidden-xs">
                                 <Line
                                     width={200}
                                     height={80}
@@ -173,6 +174,7 @@ class LeaderBoard extends Component {
                   <th scope="col">Player</th>
                   <th scope="col">Average Score</th>
                   <th scope="col">Last 10</th>
+                  <th scope="col" className="hidden-xs"></th>
                 </tr>
               </thead>
               <tbody>
