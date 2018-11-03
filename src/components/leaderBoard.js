@@ -98,12 +98,19 @@ class LeaderBoard extends Component {
     }
 
     componentDidMount() {
-        const itemsRef = firebase.database().ref('scores/');
+        const scoresData = firebase.database().ref('scores/');
+        const userDataRef = firebase.database().ref('users/');
+        let userData = [];
 
-        itemsRef.on('value', (snapshot) => {
+        userDataRef.on('value', (snapshot) => {
+            userData = snapshot.val();
+        })
+
+        scoresData.on('value', (snapshot) => {
             const data = snapshot.val();
             const keys = Object.keys(data);
             let scores = [];
+            let uids = [];
             let players = [];
             let all = [];
             let windowGames;
@@ -114,12 +121,14 @@ class LeaderBoard extends Component {
             });
 
             scores.map((s) => {
-                if (players.indexOf(s.username) === -1){
-                	players.push(s.username);
+                let un = userData[s.uid] ? userData[s.uid].username : s.username;
+                if (uids.indexOf(s.uid) === -1){
+                    uids.push(s.uid);
+                    players.push(un)
                 }
             });
 
-            players.map((player, i) => {
+            uids.map((player, i) => {
                 var parsedStats = {
                     scores:[],
                     cups:[],
@@ -129,7 +138,7 @@ class LeaderBoard extends Component {
                 };
 
                 scores.map((s)=>{
-                	if (s.username === players[i]) {
+                	if (s.uid === uids[i]) {
                 	    parsedStats['scores'].push(s.points);
                         parsedStats['cups'].push(s.cup);
                 	}
