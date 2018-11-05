@@ -22,3 +22,8 @@ h1 {
 .App-header {
     padding: 1rem 0;
 }
+
+/* Utility Classes */
+.align-right {
+    text-align: right;
+}
