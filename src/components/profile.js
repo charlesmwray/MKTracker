@@ -27,9 +27,11 @@ class Profile extends Component {
         userInfo.on('value', (snapshot) => {
             userInfo = snapshot.val();
 
-            this.setState({
-                username: userInfo.username
-            })
+            if (userInfo) {
+                this.setState({
+                    username: userInfo.username
+                })
+            }
         });
     }
     handleUsernameChange(e) {
