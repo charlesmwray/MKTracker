@@ -29,6 +29,14 @@ class App extends Component {
         !this.state.userInfo && auth.onAuthStateChanged((user) => {
             user && this.setUser(user);
         });
+
+        firebase.database().ref('scores/').on('value', (snapshot) => {
+            if (snapshot) {
+                this.setState({
+                    scoresData: snapshot.val()
+                });
+            }
+        });
     }
     login() {
         auth.signInWithPopup(provider);
@@ -92,11 +100,15 @@ class App extends Component {
                         }
                     </div>
                 }
-                <LeaderBoard />
+                {
+                    this.state.scoresData &&
+                    <LeaderBoard scores={this.state.scoresData} />
+                }
                 {
                     this.state.showProfile &&
                     <Profile
                         uid={this.state.userInfo.uid}
+                        scores={this.state.scoresData}
                         toggleProfile={this.toggleProfile.bind(this)}
                     />
                 }

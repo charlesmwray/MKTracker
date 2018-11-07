@@ -100,11 +100,7 @@ class LeaderBoard extends Component {
     componentDidMount() {
         const scoresData = firebase.database().ref('scores/');
         const userDataRef = firebase.database().ref('users/');
-        let userData = [];
-
-        userDataRef.on('value', (snapshot) => {
-            userData = snapshot.val();
-        })
+        let userData = this.props.scores;
 
         scoresData.on('value', (snapshot) => {
             const data = snapshot.val();

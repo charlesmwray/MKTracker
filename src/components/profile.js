@@ -12,6 +12,45 @@ import {
     FormControl
 } from 'react-bootstrap';
 
+const ScoresByCup = (props) => {
+    let scoreKeys = Object.keys(props.scores);
+    let parsedScores = [];
+    let thisUsersScores = [];
+    let cups = ['mushroom','flower','star','special','yoshi','crossing','shell','banana','leaf','lightning','triforce','bell'];
+    let scoresByCup = {};
+
+    scoreKeys.map(s => {
+        parsedScores.push(props.scores[s]);
+    });
+
+    thisUsersScores = parsedScores.filter(s => {
+        return s.uid === props.uid;
+    });
+
+    cups.map(c => {
+        scoresByCup[c] = thisUsersScores.filter(s => {
+            return s.cup === c
+        });
+    });
+
+    return cups.map(c => {
+        let cupScores = [];
+        let avg;
+        scoresByCup[c].map(sbc => {
+            cupScores.push(sbc.points);
+        });
+
+        avg = cupScores.reduce((a,b) => parseInt(a) + parseInt(b)) / cupScores.length;
+
+        return (
+            <div key={c}>
+                <h3>{scoresByCup[c][0].cup}({cupScores.length})</h3>
+                <h4>{avg.toFixed(2)}</h4>
+            </div>
+        )
+    })
+}
+
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -62,6 +101,7 @@ class Profile extends Component {
               <Modal.Body>
                   <Row>
                       <Col xs={12}>
+                          <h2>Details</h2>
                           <FormGroup validationState={null}>
                               <ControlLabel>Username</ControlLabel>
                               <FormControl
@@ -71,6 +111,13 @@ class Profile extends Component {
                                   bsSize="large"
                               />
                           </FormGroup>
+                      </Col>
+                      <Col xs={12}>
+                          <h2>Scores by cup</h2>
+                          <ScoresByCup
+                              scores={this.props.scores}
+                              uid={this.props.uid}
+                          />
                       </Col>
                   </Row>
               </Modal.Body>
