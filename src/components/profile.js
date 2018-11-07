@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import firebase from '../data/Firebase.js';
+import Firebase from '../data/Firebase.js';
+import Cups from '../data/Cups.js';
 
 import {
     Modal,
@@ -16,7 +17,6 @@ const ScoresByCup = (props) => {
     let scoreKeys = Object.keys(props.scores);
     let parsedScores = [];
     let thisUsersScores = [];
-    let cups = ['mushroom','flower','star','special','yoshi','crossing','shell','banana','leaf','lightning','triforce','bell'];
     let scoresByCup = {};
 
     scoreKeys.map(s => {
@@ -27,26 +27,30 @@ const ScoresByCup = (props) => {
         return s.uid === props.uid;
     });
 
-    cups.map(c => {
-        scoresByCup[c] = thisUsersScores.filter(s => {
-            return s.cup === c
+    Cups.map(c => {
+        scoresByCup[c[1]] = thisUsersScores.filter(s => {
+            return s.cup === c[1]
         });
     });
 
-    return cups.map(c => {
+    return Cups.map(c => {
         let cupScores = [];
         let avg;
-        scoresByCup[c].map(sbc => {
+
+        scoresByCup[c[1]].map(sbc => {
             cupScores.push(sbc.points);
         });
 
         avg = cupScores.reduce((a,b) => parseInt(a) + parseInt(b)) / cupScores.length;
 
         return (
-            <div key={c}>
-                <h3>{scoresByCup[c][0].cup}({cupScores.length})</h3>
-                <h4>{avg.toFixed(2)}</h4>
-            </div>
+            <Col
+                xs={2}
+                key={c[1]}
+                className="cup-row"
+            >
+                <img src={[c[0]]} className="cup-image" />({cupScores.length}){avg.toFixed(2)}
+            </Col>
         )
     })
 }
@@ -61,7 +65,7 @@ class Profile extends Component {
         }
     }
     componentWillMount() {
-        let userInfo = firebase.database().ref('users/' + this.state.uid);
+        let userInfo = Firebase.database().ref('users/' + this.state.uid);
 
         userInfo.on('value', (snapshot) => {
             userInfo = snapshot.val();
@@ -79,7 +83,7 @@ class Profile extends Component {
         })
     }
     saveUsername() {
-        let userInfo = firebase.database().ref('users/' + this.state.uid);
+        let userInfo = Firebase.database().ref('users/' + this.state.uid);
         let userInfoUpdate = {}
 
         userInfo.set({
@@ -114,10 +118,12 @@ class Profile extends Component {
                       </Col>
                       <Col xs={12}>
                           <h2>Scores by cup</h2>
-                          <ScoresByCup
-                              scores={this.props.scores}
-                              uid={this.props.uid}
-                          />
+                          <Row>
+                              <ScoresByCup
+                                  scores={this.props.scores}
+                                  uid={this.props.uid}
+                              />
+                          </Row>
                       </Col>
                   </Row>
               </Modal.Body>

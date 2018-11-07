@@ -1,21 +1,7 @@
 import React, { Component } from 'react';
 
-import firebase from '../data/Firebase.js';
-
-import '../styles/enterScore.css';
-
-import banana from '../images/cups/banana.png'
-import bell from '../images/cups/bell.png'
-import crossing from '../images/cups/crossing.png'
-import flower from '../images/cups/flower.png'
-import leaf from '../images/cups/leaf.png'
-import lightning from '../images/cups/lightning.png'
-import mushroom from '../images/cups/mushroom.png'
-import shell from '../images/cups/shell.png'
-import special from '../images/cups/special.png'
-import star from '../images/cups/star.png'
-import triforce from '../images/cups/triforce.png'
-import yoshi from '../images/cups/yoshi.png'
+import Firebase from '../data/Firebase.js';
+import Cups from '../data/Cups.js';
 
 import {
     FormGroup,
@@ -32,21 +18,12 @@ const CupRow = (props) => {
     if (props && props.cups && props.cups.length) {
         return props.cups.map((cup)=>{
             return <Col
-                xs={4}
-                sm={2}
+                xs={2}
                 key={cup[1]}
                 onClick={()=>{props.selectCup(cup[1])}}
-                style={{
-                    padding: '1rem',
-                    borderRadius: '5px',
-                    backgroundColor: cup[1] === props.selectedCup ? 'lightskyblue' : 'transparent',
-                    textAlign: 'center',
-                    cursor: 'pointer'
-                }}
+                className={ cup[1] === props.selectedCup ? 'cup-row active' : 'cup-row' }
             >
-                <img src={cup[0]}
-                    className="cups"
-                />
+                <img src={cup[0]} className="cup-image" />
             </Col>;
         });
     } else {
@@ -68,7 +45,7 @@ class EnterScore extends Component {
   }
 
   saveScore() {
-      let itemsRef = firebase.database().ref('scores/');
+      let itemsRef = Firebase.database().ref('scores/');
 
       if (this.state.pointsValue <= 60 && this.state.cupValue) {
           itemsRef.push({
@@ -125,28 +102,8 @@ class EnterScore extends Component {
                             <CupRow
                                 selectCup={this.selectCup}
                                 selectedCup={this.state.cupValue}
-                                cups={[
-                                    [mushroom,'mushroom'],
-                                    [flower,'flower'],
-                                    [star,'star'],
-                                    [special,'special'],
-                                    [yoshi,'yoshi'],
-                                    [crossing,'crossing']
-                                ]}
+                                cups={Cups}
                             />
-                        </Row>
-                        <Row>
-                            <CupRow
-                                selectCup={this.selectCup}
-                                selectedCup={this.state.cupValue}
-                                cups={[
-                                    [shell,'shell'],
-                                    [banana,'banana'],
-                                    [leaf,'leaf'],
-                                    [lightning,'lightning'],
-                                    [triforce,'triforce'],
-                                    [bell,'bell']
-                                ]} />
                         </Row>
                     </Col>
                     <Col xs={12} style={{ textAlign:'right', marginTop: '2rem' }}>
