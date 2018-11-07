@@ -22,7 +22,6 @@ const ScoreToolTip = (score) => {
             <ul>
                 {
                     // Returns the latest 10 scores
-                    // scores.slice(0, Math.min(10, scores.length)).map((value, index) => {
                     scores.slice(Math.max(scores.length - 10, 0)).reverse().map((value, index) => {
                         return (
                             <li key={index} >
