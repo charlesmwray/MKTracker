@@ -59,31 +59,33 @@ class App extends Component {
             <div className="App container">
                 <header className="App-header">
                     <Row>
-                        <Col xs={6} sm={8}>
+                        <Col xs={12} sm={8}>
                             <h1>Mario Kart Tracker</h1>
                         </Col>
-                        <Col xs={4} sm={2} className="align-right">
+                        <Col xs={12} sm={4}>
                             {!this.state.userInfo && <Button bsStyle="primary" onClick={() => {this.login()}}>Log In</Button>}
                             {
                                 this.state.userInfo &&
-                                <ButtonGroup>
-                                    <Button bsStyle="primary" onClick={() => {this.toggleAddScore()}}>Add Score</Button>
-                                    <Button bsStyle="info" onClick={() => { this.toggleProfile() }}>Profile</Button>
-                                </ButtonGroup>
-                            }
-                        </Col>
-                        <Col xs={2} sm={2} className="align-right">
-                            {
-                                this.state.userInfo &&
-                                <img
+                                <div
+                                    className="align-right"
                                     style={{
-                                        margin: '1rem',
-                                        width: '50px',
-                                        height: '50px',
-                                        borderRadius: '50%'
-                                    }}
-                                    src={this.state.userInfo.photoURL}
-                                />
+                                        display: 'flex',
+                                        flexDirection: 'row'
+                                    }}>
+                                    <ButtonGroup>
+                                        <Button bsStyle="primary" onClick={() => {this.toggleAddScore()}}>Add Score</Button>
+                                        <Button bsStyle="info" onClick={() => { this.toggleProfile() }}>Profile</Button>
+                                    </ButtonGroup>
+                                    <img
+                                        style={{
+                                            margin: '1rem',
+                                            width: '50px',
+                                            height: '50px',
+                                            borderRadius: '50%'
+                                        }}
+                                        src={this.state.userInfo.photoURL}
+                                    />
+                                </div>
                             }
                         </Col>
                     </Row>

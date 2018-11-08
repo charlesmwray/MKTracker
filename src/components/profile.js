@@ -24,7 +24,7 @@ const ScoresByCup = (props) => {
     });
 
     thisUsersScores = parsedScores.filter(s => {
-        return s.uid === props.uid;
+        return s.uid === 'DKnyuveNkVPTJ7g21ihOCTiPtAR2';
     });
 
     Cups.map(c => {
@@ -38,18 +38,23 @@ const ScoresByCup = (props) => {
         let avg;
 
         scoresByCup[c[1]].map(sbc => {
+            console.log(sbc);
             cupScores.push(sbc.points);
         });
 
-        avg = cupScores.reduce((a,b) => parseInt(a) + parseInt(b)) / cupScores.length;
+        avg = cupScores.length ? (cupScores.reduce((a = 0,b = 0) => parseInt(a) + parseInt(b)) / cupScores.length).toFixed(2) : 'none';
+
 
         return (
             <Col
                 xs={2}
                 key={c[1]}
                 className="cup-row"
+                style={{
+                    padding: '2rem'
+                }}
             >
-                <img src={[c[0]]} className="cup-image" />({cupScores.length}){avg.toFixed(2)}
+                <img src={[c[0]]} className="cup-image" /><h3>{avg}</h3>
             </Col>
         )
     })
