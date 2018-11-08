@@ -24,7 +24,7 @@ const ScoresByCup = (props) => {
     });
 
     thisUsersScores = parsedScores.filter(s => {
-        return s.uid === 'DKnyuveNkVPTJ7g21ihOCTiPtAR2';
+        return s.uid === props.uid;
     });
 
     Cups.map(c => {
