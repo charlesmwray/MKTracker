@@ -22,7 +22,7 @@ const ScoreToolTip = (score) => {
             <ul>
                 {
                     // Returns the latest 10 scores
-                    scores.slice(0, Math.min(10, scores.length)).map((value, index) => {
+                    scores.slice(Math.max(scores.length - 10, 0)).reverse().map((value, index) => {
                         return (
                             <li key={index} >
                                 {value.replace(/^0+/, '')}
@@ -100,11 +100,7 @@ class LeaderBoard extends Component {
     componentDidMount() {
         const scoresData = firebase.database().ref('scores/');
         const userDataRef = firebase.database().ref('users/');
-        let userData = [];
-
-        userDataRef.on('value', (snapshot) => {
-            userData = snapshot.val();
-        })
+        let userData = this.props.scores;
 
         scoresData.on('value', (snapshot) => {
             const data = snapshot.val();

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import firebase from '../data/Firebase.js';
+import Firebase from '../data/Firebase.js';
+import Cups from '../data/Cups.js';
 
 import {
     Modal,
@@ -12,6 +13,53 @@ import {
     FormControl
 } from 'react-bootstrap';
 
+const ScoresByCup = (props) => {
+    let scoreKeys = Object.keys(props.scores);
+    let parsedScores = [];
+    let thisUsersScores = [];
+    let scoresByCup = {};
+
+    scoreKeys.map(s => {
+        parsedScores.push(props.scores[s]);
+    });
+
+    thisUsersScores = parsedScores.filter(s => {
+        return s.uid === props.uid;
+    });
+
+    Cups.map(c => {
+        scoresByCup[c[1]] = thisUsersScores.filter(s => {
+            return s.cup === c[1]
+        });
+    });
+
+    return Cups.map(c => {
+        let cupScores = [];
+        let avg;
+
+        scoresByCup[c[1]].map(sbc => {
+            console.log(sbc);
+            cupScores.push(sbc.points);
+        });
+
+        avg = cupScores.length ? (cupScores.reduce((a = 0,b = 0) => parseInt(a) + parseInt(b)) / cupScores.length).toFixed(2) : 'none';
+
+
+        return (
+            <Col
+                xs={2}
+                key={c[1]}
+                className="cup-row"
+                style={{
+                    padding: '2rem'
+                }}
+            >
+                <img src={[c[0]]} className="cup-image" /><h3>{avg}</h3>
+            </Col>
+        )
+    })
+}
+
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +70,7 @@ class Profile extends Component {
         }
     }
     componentWillMount() {
-        let userInfo = firebase.database().ref('users/' + this.state.uid);
+        let userInfo = Firebase.database().ref('users/' + this.state.uid);
 
         userInfo.on('value', (snapshot) => {
             userInfo = snapshot.val();
@@ -40,7 +88,7 @@ class Profile extends Component {
         })
     }
     saveUsername() {
-        let userInfo = firebase.database().ref('users/' + this.state.uid);
+        let userInfo = Firebase.database().ref('users/' + this.state.uid);
         let userInfoUpdate = {}
 
         userInfo.set({
@@ -62,6 +110,7 @@ class Profile extends Component {
               <Modal.Body>
                   <Row>
                       <Col xs={12}>
+                          <h2>Details</h2>
                           <FormGroup validationState={null}>
                               <ControlLabel>Username</ControlLabel>
                               <FormControl
@@ -71,6 +120,15 @@ class Profile extends Component {
                                   bsSize="large"
                               />
                           </FormGroup>
+                      </Col>
+                      <Col xs={12}>
+                          <h2>Scores by cup</h2>
+                          <Row>
+                              <ScoresByCup
+                                  scores={this.props.scores}
+                                  uid={this.props.uid}
+                              />
+                          </Row>
                       </Col>
                   </Row>
               </Modal.Body>

@@ -23,7 +23,32 @@ h1 {
     padding: 1rem 0;
 }
 
+.cup-row {
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+}
+.cup-row.active {
+    background-color: lightskyblue;
+}
+.cup-image {
+    animation: beat .6s ease-in-out infinite alternate;
+    width: 100%;
+    background-color: black;
+    border-radius: 50%;
+    padding: 1px;
+}
+
+@keyframes beat {
+    from {	transform: rotate(-3deg); }
+    to {	transform: rotate(3deg); }
+}
+
+
 /* Utility Classes */
 .align-right {
     text-align: right;
 }
+/* End Utility Classes */
