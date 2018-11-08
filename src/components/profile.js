@@ -51,10 +51,10 @@ const ScoresByCup = (props) => {
                 key={c[1]}
                 className="cup-row"
                 style={{
-                    padding: '2rem'
+                    padding: '.75rem'
                 }}
             >
-                <img src={[c[0]]} className="cup-image" /><h3>{avg}</h3>
+                <img src={[c[0]]} className="cup-image" /><span>{avg}</span>
             </Col>
         )
     })
@@ -123,7 +123,9 @@ class Profile extends Component {
                       </Col>
                       <Col xs={12}>
                           <h2>Scores by cup</h2>
-                          <Row>
+                          <Row style={{
+                              padding: '2rem'
+                          }}>
                               <ScoresByCup
                                   scores={this.props.scores}
                                   uid={this.props.uid}
