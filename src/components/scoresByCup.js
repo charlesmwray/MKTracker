@@ -8,7 +8,6 @@ import {
 import Cups from '../data/Cups.js';
 
 const ScoresByCup = (props) => {
-    console.log(props.scores);
     let ScoreKeys = Object.keys(props.scores);
     let parsedScores = [];
     let thisUsersScores = [];

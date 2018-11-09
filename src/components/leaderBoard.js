@@ -59,7 +59,11 @@ const Scores = (props) => {
                         (score)} key={i}>
                         <tr >
                             <th scope="row">{i+1}</th>
-                            <td onClick={() => { props.showScoresByCup(score.uid, score.username) }}>{score.username}</td>
+                            <td>
+                                <a href="#" onClick={() => { props.showScoresByCup(score.uid, score.username) }}>
+                                    {score.username}
+                                </a>
+                            </td>
                             <td>{score.avgScore.toFixed(1)}</td>
                             <td>{score.avgLast10.toFixed(1)}</td>
                             <td style={{
