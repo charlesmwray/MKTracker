@@ -21,8 +21,7 @@ class App extends Component {
         this.state = {
             userInfo: null,
             showAddScore: false,
-            showProfile: false,
-            userInfo: null
+            showProfile: false
         }
     }
     componentDidMount() {

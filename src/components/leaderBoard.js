@@ -201,9 +201,13 @@ class LeaderBoard extends Component {
 
         this.toggleShowScoresByCup();
     }
-
+    
     render() {
+                            console.log(this.state.scores);
         return  <div>
+            <div>
+                
+            </div>
             <table className="table table-striped">
               <thead>
                 <tr>
