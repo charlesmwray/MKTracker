@@ -70,7 +70,9 @@ class App extends Component {
                                     className="align-right"
                                     style={{
                                         display: 'flex',
-                                        flexDirection: 'row'
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        justifyContent: 'flex-end'
                                     }}>
                                     <ButtonGroup>
                                         <Button bsStyle="primary" onClick={() => {this.toggleAddScore()}}>Add Score</Button>

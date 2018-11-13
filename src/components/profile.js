@@ -63,7 +63,7 @@ class Profile extends Component {
               </Modal.Header>
               <Modal.Body>
                   <Row>
-                      <Col xs={12}>
+                      <Col xs={12} lg={4}>
                           <h2>Details</h2>
                           <FormGroup validationState={null}>
                               <ControlLabel>Username</ControlLabel>
@@ -75,7 +75,7 @@ class Profile extends Component {
                               />
                           </FormGroup>
                       </Col>
-                      <Col xs={12}>
+                      <Col xs={12} lg={8}>
                           <h2>Scores by cup</h2>
                           <Row style={{
                               padding: '2rem'

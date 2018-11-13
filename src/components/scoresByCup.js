@@ -17,12 +17,14 @@ const ScoresByCup = (props) => {
         parsedScores.push(props.scores[s]);
     });
 
-    thisUsersScores = parsedScores.filter(s => {
-        return s.uid === props.uid;
-    });
+    if (props.uid) {
+        parsedScores = parsedScores.filter(s => {
+            return s.uid === props.uid;
+        });
+    }
 
     Cups.map(c => {
-        scoresByCup[c[1]] = thisUsersScores.filter(s => {
+        scoresByCup[c[1]] = parsedScores.filter(s => {
             return s.cup === c[1]
         });
     });
