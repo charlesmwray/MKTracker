@@ -29,7 +29,6 @@ const CupRow = (props) => {
     } else {
         return 'null';
     }
-    //
 }
 
 class EnterScore extends Component {
@@ -52,7 +51,7 @@ class EnterScore extends Component {
               uid: this.props.userInfo.uid,
               points: this.state.pointsValue,
               cup: this.state.cupValue,
-              date: new Date(),
+              date: new Date().toDateString(),
               username: this.props.userInfo.displayName,
               photoURL: this.props.userInfo.photoURL
           });

@@ -12,7 +12,9 @@ import {
     Modal,
     Button,
     Row,
-    Col
+    Col,
+    Tabs,
+    Tab
 } from 'react-bootstrap';
 
 const CupArray = (props) => {
@@ -51,8 +53,9 @@ const Scores = (props) => {
             props.scores.map((score,  i) => {
                 let labels = [];
                 let placement = i > 3 ? 'top' : 'bottom';
-                for (var j = 0; j < score.scores.length; j++) {
-                    labels.push(score.scores[j]);
+                const scoresData = score.scores.slice(Math.max(score.scores.length - 10, 0)) || [];
+                for (var j = 0; j < scoresData.length; j++) {
+                    labels.push(scoresData[j]);
                 }
                 return (
                     <OverlayTrigger trigger={['hover', 'focus']} placement={placement} overlay={ScoreToolTip
@@ -63,6 +66,13 @@ const Scores = (props) => {
                                 <a href="#" onClick={() => { props.showScoresByCup(score.uid, score.username) }}>
                                     {score.username}
                                 </a>
+                                {
+                                    score.date &&
+                                    <div style={{
+                                        fontSize: '1.25rem',
+                                        color: '#999'
+                                    }}>Last updated: {score.date}</div>
+                                }
                             </td>
                             <td>{score.avgScore.toFixed(1)}</td>
                             <td>{score.avgLast10.toFixed(1)}</td>
@@ -74,10 +84,10 @@ const Scores = (props) => {
                                     width={200}
                                     height={80}
                                     data={{
-                                        labels: labels,
+                                        labels: labels.reverse(),
                                         datasets: [{
                                           label: 'All scores',
-                                          data: score.scores,
+                                          data: scoresData,
                                           backgroundColor: "#ff5722"
                                         }]
                                     }}
@@ -148,13 +158,16 @@ class LeaderBoard extends Component {
                         avgScore: 0,
                         avgLast10: 0,
                         username: players[i][0],
-                        uid: players[i][1]
+                        uid: players[i][1],
+                        date: ''
                     };
 
                     scores.map((s)=>{
                     	if (s.uid === uids[i]) {
                     	    parsedStats['scores'].push(s.points);
                             parsedStats['cups'].push(s.cup);
+
+                            parsedStats['date'] = s.date;
                     	}
                     });
 
@@ -204,23 +217,46 @@ class LeaderBoard extends Component {
 
     render() {
         return  <div>
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Rank</th>
-                  <th scope="col">Player</th>
-                  <th scope="col">Average Score</th>
-                  <th scope="col">Last 10</th>
-                  <th scope="col" className="hidden-xs"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <Scores
-                    scores={this.state.scores}
-                    showScoresByCup={this.showScoresByCup.bind(this)}
-                />
-              </tbody>
-            </table>
+            <Tabs>
+                <Tab eventKey={1} title="Leaderboard">
+                    <table
+                        className="table table-striped"
+                        style={{
+                            marginTop: '2rem'
+                        }}
+                    >
+                        <thead>
+                            <tr>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Player</th>
+                                <th scope="col">Average Score</th>
+                                <th scope="col">Last 10</th>
+                                <th scope="col" className="hidden-xs"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <Scores
+                                scores={this.state.scores}
+                                showScoresByCup={this.showScoresByCup.bind(this)}
+                            />
+                        </tbody>
+                    </table>
+                </Tab>
+                <Tab eventKey={2} title="Scores By Cup">
+                    <Row>
+                        <Col
+                            xs={12}
+                            smOffset={1} sm={10}
+                            lgOffset={2} lg={8}
+                            style={{
+                                marginTop: '2rem'
+                            }}
+                        >
+                            <ScoresByCup scores={this.props.scores} />
+                        </Col>
+                    </Row>
+                </Tab>
+            </Tabs>
             <Modal
               show={this.state.showScoresByCup}
               bsSize="large"
