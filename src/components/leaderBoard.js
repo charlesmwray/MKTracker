@@ -17,12 +17,6 @@ import {
     Tab
 } from 'react-bootstrap';
 
-const CupArray = (props) => {
-    return props.cups.map((cup) => {
-        return <span>{cup}</span>
-    })
-}
-
 const ScoreToolTip = (score) => {
     let scores = score.scores
     return (
@@ -58,14 +52,24 @@ const Scores = (props) => {
                     labels.push(scoresData[j]);
                 }
                 return (
-                    <OverlayTrigger trigger={['hover', 'focus']} placement={placement} overlay={ScoreToolTip
-                        (score)} key={i}>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement={placement}
+                        overlay={ScoreToolTip(score)}
+                        key={i}>
                         <tr >
                             <th scope="row">{i+1}</th>
                             <td>
-                                <a href="#" onClick={() => { props.showScoresByCup(score.uid, score.username) }}>
+                                <span
+                                    role="button"
+                                    onClick={() => { props.showScoresByCup(score.uid, score.username) }}
+                                    style={{
+                                        color: '#337ab7',
+                                        textDecoration: 'underline'
+                                    }}
+                                >
                                     {score.username}
-                                </a>
+                                </span>
                                 {
                                     score.date &&
                                     <div style={{
@@ -86,9 +90,8 @@ const Scores = (props) => {
                                     data={{
                                         labels: labels.reverse(),
                                         datasets: [{
-                                          label: 'All scores',
-                                          data: scoresData,
-                                          backgroundColor: "#ff5722"
+                                            data: scoresData,
+                                            backgroundColor: "#ff5722"
                                         }]
                                     }}
                                     options={{
@@ -96,9 +99,12 @@ const Scores = (props) => {
                                         legend: {
                                             display: false
                                         },
+                                        tooltips: {
+                                             enabled: false
+                                        },
                                         scales:{
                                             xAxes: [{
-                                                display: false //this will remove all the x-axis grid lines
+                                                display: false
                                             }]
                                         }
                                     }}
@@ -176,8 +182,8 @@ class LeaderBoard extends Component {
                     // Avg score over last 10 games
     				windowGames = parsedStats['scores'].length > 10 ? 10 : parsedStats['scores'].length;
     				windowTotal = 0;
-    				for (var i = 0; i < windowGames; i++) {
-                        windowTotal = windowTotal + parseInt(parsedStats['scores'][ parsedStats['scores'].length - 1 - i]);
+    				for (var j = 0; j < windowGames; j++) {
+                        windowTotal = windowTotal + parseInt(parsedStats['scores'][ parsedStats['scores'].length - 1 - j]);
                     }
                     parsedStats['avgLast10'] = windowTotal/windowGames;
 
@@ -217,7 +223,7 @@ class LeaderBoard extends Component {
 
     render() {
         return  <div>
-            <Tabs>
+            <Tabs id="leaderboard-tabs">
                 <Tab eventKey={1} title="Leaderboard">
                     <table
                         className="table table-striped"

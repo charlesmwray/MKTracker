@@ -21,8 +21,7 @@ class App extends Component {
         this.state = {
             userInfo: null,
             showAddScore: false,
-            showProfile: false,
-            userInfo: null
+            showProfile: false
         }
     }
     componentDidMount() {
@@ -85,6 +84,7 @@ class App extends Component {
                                             height: '50px',
                                             borderRadius: '50%'
                                         }}
+                                        alt="User's avatar."
                                         src={this.state.userInfo.photoURL}
                                     />
                                 </div>

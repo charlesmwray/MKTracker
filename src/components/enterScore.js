@@ -7,7 +7,6 @@ import {
     FormGroup,
     ControlLabel,
     FormControl,
-    HelpBlock,
     Grid,
     Row,
     Col,
@@ -23,7 +22,7 @@ const CupRow = (props) => {
                 onClick={()=>{props.selectCup(cup[1])}}
                 className={ cup[1] === props.selectedCup ? 'cup-row active' : 'cup-row' }
             >
-                <img src={cup[0]} className="cup-image" />
+                <img src={cup[0]} alt={cup[1] + ' cup'} className="cup-image" />
             </Col>;
         });
     } else {

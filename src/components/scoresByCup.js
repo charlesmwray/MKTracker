@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import {
-    Row,
     Col
 } from 'react-bootstrap';
 
@@ -10,7 +9,6 @@ import Cups from '../data/Cups.js';
 const ScoresByCup = (props) => {
     let ScoreKeys = Object.keys(props.scores);
     let parsedScores = [];
-    let thisUsersScores = [];
     let scoresByCup = {};
 
     ScoreKeys.map(s => {
@@ -34,7 +32,6 @@ const ScoresByCup = (props) => {
         let avg;
 
         scoresByCup[c[1]].map(sbc => {
-            console.log(sbc);
             cupScores.push(sbc.points);
         });
 
@@ -51,7 +48,7 @@ const ScoresByCup = (props) => {
                     cursor: 'default'
                 }}
             >
-                <img src={[c[0]]} className="cup-image" /><span>{avg}</span>
+                <img src={[c[0]]} alt={c[1] + ' cup'} className="cup-image" /><span>{avg}</span>
             </Col>
         )
     })

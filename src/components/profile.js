@@ -43,8 +43,7 @@ class Profile extends Component {
     }
     saveUsername() {
         let userInfo = Firebase.database().ref('users/' + this.state.uid);
-        let userInfoUpdate = {}
-
+        
         userInfo.set({
             username: this.state.username
         }).then(()=>{
