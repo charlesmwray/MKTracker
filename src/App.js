@@ -59,7 +59,7 @@ class App extends Component {
                 <header className="App-header">
                     <Row>
                         <Col xs={12} sm={8}>
-                            <h1>Mario Kart Tracker</h1>
+                            <h1 data-attr="MKTracker">MKTracker</h1>
                         </Col>
                         <Col xs={12} sm={4}>
                             {!this.state.userInfo && <Button bsStyle="primary" onClick={() => {this.login()}}>Log In</Button>}

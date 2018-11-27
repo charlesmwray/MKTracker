@@ -7,11 +7,32 @@ body {
 }
 
 h1 {
-    font-size: 6rem;
-    line-height: 1;
-    margin: 1rem 0;
-    font-weight: 900;
+	font-size: 6rem;
+	margin: 1rem 0;
+	font-weight: 900;
+	font-style: italic;
+	z-index: 1;
+	position: relative;
 }
+h1:before,
+h1:after {
+	content: "MKTracker";
+	opacity: 0.5;
+	position: absolute;
+	z-index: 0;
+}
+h1:before {
+	color: red;
+	left: -2px;
+	top: -2px;
+}
+h1:after {
+	color: blue;
+	left: 2px;
+	top: 2px;
+}
+
+
 .cups {
 	animation: beat 1s ease-in-out infinite alternate;
 }
