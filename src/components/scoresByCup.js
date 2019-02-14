@@ -44,11 +44,15 @@ const ScoresByCup = (props) => {
                 key={c[1]}
                 className="cup-row"
                 style={{
-                    padding: '.75rem',
                     cursor: 'default'
                 }}
             >
-                <img src={[c[0]]} alt={c[1] + ' cup'} className="cup-image" /><span>{avg}</span>
+                <div className="scoreCell">
+                    <img src={[c[0]]} alt={c[1] + ' cup'} className="cup-image" />
+                    <span className="score">
+                        {avg}
+                    </span>
+                </div>
             </Col>
         )
     })

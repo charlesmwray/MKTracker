@@ -188,7 +188,8 @@ class LeaderBoard extends Component {
                     parsedStats['avgLast10'] = windowTotal/windowGames;
 
     				parsedStats['avgScore'] = parsedStats['scores'].reduce((a,b) => { return parseInt(a) + parseInt(b);  }) /  parsedStats['scores'].length;
-                    all.push(parsedStats);
+
+                    parsedStats.scores.length > 9 && all.push(parsedStats);
                 });
 
                 this.setState({

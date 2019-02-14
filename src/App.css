@@ -67,6 +67,24 @@ h1:after {
     to {	transform: rotate(3deg); }
 }
 
+/* Scores by cup */
+.scoreCell .score {
+    font-size: 1.5rem;
+}
+@media (min-width: 540px) {
+    .scoreCell {
+        font-weight: 900;
+        padding: .75rem;
+        background-color: #222;
+        border-radius: 2rem;
+        font-weight: 900;
+    }
+
+    .scoreCell .score {
+        font-size: 2rem;
+        color: #fff;
+    }
+}
 
 /* Utility Classes */
 .align-right {
